@@ -1,0 +1,24 @@
+/* Tailwind + DaisyUI setup */
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: all;
+}
+
+/* Default body font = Inter */
+body {
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings & Logo = Outfit */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-heading,
+.logo {
+  font-family: "Outfit", sans-serif;
+}
