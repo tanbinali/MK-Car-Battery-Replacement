@@ -19,7 +19,7 @@
 
 ## Live
 
-> **Live URL:** _(Replace with your hosted domain, e.g., [https://mohammadkhanautoparts.com](https://mohammadkhanautoparts.com))_
+> **Live URL:** _([https://mk-car-battery-replacement.vercel.app](https://mk-car-battery-replacement.vercel.app)_
 
 ---
 
