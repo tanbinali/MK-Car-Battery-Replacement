@@ -31,6 +31,9 @@ const menuItems = [
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  
+  const [pendingScroll, setPendingScroll] = useState(null); 
+  
   const navRef = useRef(null);
 
   useEffect(() => {
@@ -45,14 +48,17 @@ const Navbar = () => {
 
     const navHeight = navRef.current ? navRef.current.offsetHeight : 0;
     const sectionTop = section.getBoundingClientRect().top + window.scrollY;
-    
     const target = sectionTop - navHeight;
 
     window.scrollTo({ top: target, behavior: "smooth" });
     setIsOpen(false);
   };
 
-  // Dynamic classes for contrast against the dark video hero
+  const handleMobileNav = (id) => {
+    setPendingScroll(id);
+    setIsOpen(false);
+  };
+
   const navBgClass = isScrolled ? "bg-base-100/95 backdrop-blur-md shadow-sm" : "bg-transparent";
   const textColorClass = isScrolled ? "text-base-content" : "text-white";
   const hoverColorClass = isScrolled ? "hover:text-primary" : "hover:text-primary-content";
@@ -66,7 +72,6 @@ const Navbar = () => {
         className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between"
         aria-label="Main Navigation"
       >
-        
         {/* Logo */}
         <button
           onClick={() => performScroll("hero")}
@@ -76,7 +81,7 @@ const Navbar = () => {
           <div className="bg-white p-1 rounded-lg shadow-sm group-hover:shadow-md transition-shadow">
             <img 
               src={logo} 
-              alt="Mohammad Khan Car Replacement" 
+              alt="Mohammad Khan Auto Parts" 
               className="h-8 w-auto object-contain" 
             />
           </div>
@@ -101,7 +106,6 @@ const Navbar = () => {
             ))}
           </ul>
           
-          {/* Header CTA */}
           <a
             href="tel:+971543457768"
             className="btn btn-primary btn-sm h-10 px-6 rounded-full shadow-md hover:scale-105 transition-transform text-white"
@@ -114,18 +118,24 @@ const Navbar = () => {
 
         {/* Mobile Hamburger */}
         <button
-          className={`md:hidden p-2 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-primary ${textColorClass}`}
+          className={`md:hidden p-2 rounded-lg transition-colors focus:outline-none ${textColorClass}`}
           onClick={() => setIsOpen(!isOpen)}
           aria-expanded={isOpen}
           aria-label="Toggle navigation menu"
         >
           {isOpen ? <FiX className="w-7 h-7" /> : <FiMenu className="w-7 h-7" />}
         </button>
-
       </nav>
 
       {/* Mobile Dropdown */}
-      <AnimatePresence>
+      <AnimatePresence
+        onExitComplete={() => {
+          if (pendingScroll) {
+            performScroll(pendingScroll);
+            setPendingScroll(null);
+          }
+        }}
+      >
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
@@ -138,7 +148,7 @@ const Navbar = () => {
               {menuItems.map((item) => (
                 <li key={item.id}>
                   <button
-                    onClick={() => performScroll(item.id)}
+                    onClick={() => handleMobileNav(item.id)} 
                     className="w-full flex items-center text-base-content/80 hover:text-primary font-medium py-3 border-b border-base-200 last:border-0"
                   >
                     <span className="text-primary mr-3">{item.icon}</span>
