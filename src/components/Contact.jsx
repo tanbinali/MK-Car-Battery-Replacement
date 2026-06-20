@@ -18,7 +18,7 @@ const structuredData = {
     contactType: "customer service",
     availableLanguage: ["English", "Arabic"],
   },
-  url: "https://mohammadkhanautoparts.com",
+  url: "https://mkcarbatteries.com",
 };
 
 const Contact = () => {

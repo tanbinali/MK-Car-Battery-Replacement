@@ -19,7 +19,7 @@ const structuredData = {
   "@type": "AutoRepair",
   name: "Mohammad Khan Car Replacement",
   description: "24/7 on-site car battery replacement and jump-start services in Abu Dhabi.",
-  image: "https://mohammadkhanautoparts.com/banner.png",
+  image: "https://mkcarbatteries.com/banner.png",
   address: {
     "@type": "PostalAddress",
     streetAddress: "Mussafah",
@@ -28,7 +28,7 @@ const structuredData = {
   },
   openingHours: "Mo-Su 00:00-23:59",
   telephone: "+971543457768",
-  url: "https://mohammadkhanautoparts.com",
+  url: "https://mkcarbatteries.com",
 };
 
 const AboutUs = () => {

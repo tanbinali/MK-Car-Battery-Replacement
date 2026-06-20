@@ -67,8 +67,8 @@ const ReviewsSection = () => {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "AutoPartsStore",
-    name: "Mohammad Khan Car Battery Services",
-    url: "https://mohammadkhanautoparts.com",
+    name: "Mohammad Khan Car Battery Replacement",
+    url: "https://mkcarbatteries.com",
     description: "Professional on-site car battery replacement and delivery service in Abu Dhabi & Mussafah.",
     aggregateRating: {
       "@type": "AggregateRating",
@@ -92,8 +92,8 @@ const ReviewsSection = () => {
       datePublished: r.date,
       itemReviewed: {
         "@type": "AutoPartsStore",
-        name: "Mohammad Khan Car Battery Services",
-        url: "https://mohammadkhanautoparts.com",
+        name: "Mohammad Khan Car Battery Replacement",
+        url: "https://mkcarbatteries.com",
       },
     })),
   };
